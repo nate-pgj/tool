@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>screenshot</title>
+   <style>
+      .app {
+         width: 400px;
+         height: 400px;
+         background: red;
+      }
+
+      .test {
+         width: 300px;
+         height: 300px;
+         background: blue;
+         position: relative;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         display: inline-block;
+      }
+   </style>
+
+   <script src="./canvas2image.js"></script>
+   <script src="./html2canvas.min.js"></script>
+</head>
+
+<body>
+   <div class="app">
+      <div class="test"></div>
+   </div>
+
+   <br>
+   <input type="text" placeholder="请输入要保存的文件名" id="input">
+   <button id="save">save</button>
+</body>
+<script>
+   window.onload = function () {
+      const app = document.getElementsByClassName('app')[0];
+      const input = document.getElementById('input');
+      const save = document.getElementById('save');
+
+      save.onclick = function () {
+         const f = input.value;
+         html2canvas(app).then(function (canvas) {
+            const w = canvas.width;
+            const h = canvas.height;
+            Canvas2Image.saveAsImage(canvas, w, h, '.png', f);
+         })
+      }
+   }
+</script>
+
+</html>

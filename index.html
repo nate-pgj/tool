@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>tool</title>
+   <style>
+      * {
+         margin: 0px;
+         padding: 0px;
+      }
+
+      p {
+         padding: 10px 30px;
+      }
+
+      p:hover {
+         background: #ccc;
+      }
+   </style>
+</head>
+
+<body>
+
+</body>
+<script>
+   window.onload = function () {
+      const data = ['screenshot'];
+      data.forEach((item, index) => {
+         const p = document.createElement('p');
+         p.innerText = (index + 1) + ':' + item
+         document.body.appendChild(p)
+         p.onclick = function () {
+            console.log('index', index);
+            window.open('./' + item + '/index.html', '_self')
+         }
+      })
+   }
+</script>
+
+</html>
